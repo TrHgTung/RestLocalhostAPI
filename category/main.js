@@ -55,7 +55,7 @@ postsList.addEventListener('click', (e) => {
         e.preventDefault();
         // console.log('edited');
         fetch(`${url}/${id}`,{
-            method: 'PATCH',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },

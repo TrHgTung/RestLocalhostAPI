@@ -1,6 +1,6 @@
 const postsList = document.querySelector('.posts-list');
 let output = '';
-const url = 'http://localhost:5177/api/Category';
+const url = 'http://localhost:5177/api/department';
 const addPostForm = document.querySelector('.add-post-form');
 // const titleValue = document.getElementById('body-value');
 const bodyValue = document.getElementById('body-value');
@@ -10,10 +10,10 @@ const renderPosts = (posts) => {
         output += `
         <div class="card col-md-6 bg-ligt mt-2" style="width: 18rem;">
             <div class="card-body" data-id=${post.id}>
-                <h5 class="card-title">Mã chuyên ngành: #0000${post.id}</h5>
-                <strong>Tên chuyên ngành:</strong>
+                <h5 class="card-title">Mã số khoa: #0000${post.id}</h5>
+                <strong>Tên khoa:</strong>
                 <h6 class="card-subtitle mb-2 text-body-secondary"> ${post.name}</h6>
-                <p class="card-text">Quản lý chuyên ngành</p> 
+                <p class="card-text">Quản lý khoa</p> 
                 <a href="#" class="card-link" id="edit-post">Sửa</a>
                 <a href="#" class="card-link" id="delete-post">Xóa</a>
             </div>
@@ -55,7 +55,7 @@ postsList.addEventListener('click', (e) => {
         e.preventDefault();
         // console.log('edited');
         fetch(`${url}/${id}`,{
-            method: 'PATCH',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },

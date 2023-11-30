@@ -60,10 +60,17 @@ postsList.addEventListener('click', (e) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                body: bodyValue.value,
+                name: bodyValue.value
             })
         })
         .then(res => res.json())
+        // .then(res => console.log(res.status))
+        
+        // .then(data => {
+        //     const dataArr = [];
+        //     dataArr.push(data);
+        //     renderPosts(dataArr);
+        // })
         .then(() => location.reload())
     })
 });
@@ -91,4 +98,7 @@ addPostForm.addEventListener('submit', (e) =>{
         dataArr.push(data);
         renderPosts(dataArr);
     })
+
+    bodyValue.value = '';
+    
 })

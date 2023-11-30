@@ -10,10 +10,10 @@ const renderPosts = (posts) => {
         output += `
         <div class="card col-md-6 bg-ligt mt-2" style="width: 18rem;">
             <div class="card-body" data-id=${post.id}>
-                <h5 class="card-title">Mã số khoa: #0000${post.id}</h5>
-                <strong>Tên khoa:</strong>
+                <h5 class="card-title">Mã Khoa: #0000${post.id}</h5>
+                <strong>Tên Khoa:</strong>
                 <h6 class="card-subtitle mb-2 text-body-secondary"> ${post.name}</h6>
-                <p class="card-text">Quản lý khoa</p> 
+                <p class="card-text">Quản lý Khoa</p> 
                 <a href="#" class="card-link" id="edit-post">Sửa</a>
                 <a href="#" class="card-link" id="delete-post">Xóa</a>
             </div>
@@ -60,10 +60,17 @@ postsList.addEventListener('click', (e) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                body: bodyValue.value,
+                name: bodyValue.value
             })
         })
         .then(res => res.json())
+        // .then(res => console.log(res.status))
+        
+        // .then(data => {
+        //     const dataArr = [];
+        //     dataArr.push(data);
+        //     renderPosts(dataArr);
+        // })
         .then(() => location.reload())
     })
 });
@@ -91,4 +98,7 @@ addPostForm.addEventListener('submit', (e) =>{
         dataArr.push(data);
         renderPosts(dataArr);
     })
+
+    bodyValue.value = '';
+    
 })
